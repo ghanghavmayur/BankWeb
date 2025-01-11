@@ -10,7 +10,7 @@
     <a href="/"><h1>SecureTrust Bank</h1></a>
 </header>
 <nav>
-    <a href="homePage">Home</a>
+    <a href="/">Home</a>
     <a href="aboutus">About Us</a>
     <a href="dashlogin">Banking</a>
 </nav>

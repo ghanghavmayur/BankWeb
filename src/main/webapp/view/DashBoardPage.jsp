@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -179,6 +179,7 @@
 
     <header>
         <h2>Welcome to Our Bank Dashboard</h2>
+        <a href="/" class="/">Home</a>       
         <a href="/dash" class="logout-btn">LogOut</a>
     </header>
 
@@ -193,8 +194,8 @@
         <div class="quick-links">
             <h3>Quick Links</h3>
             <ul>
-                <li><a href="#">Transfer Money</a></li>
-                <li><a href="#">View Statements</a></li>
+                <li><a href="moneytransfer">Transfer Money</a></li>
+                <li><a href="statements">View Statements</a></li>
                 <li><a href="/loanpage">Apply for Loan</a></li>
             </ul>
         </div>

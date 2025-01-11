@@ -11,20 +11,22 @@
     <a href="/"><h1>SecureTrust Bank</h1></a>
 </header>
 <nav>
-    <a href="/">Home</a>
-    <a href=aboutus>About Us</a>
+    <a href="/">Home</a>	
+    <a href="aboutus">About Us</a>
     <a href="dashlogin">Banking</a>
+    <a href="contact">Contact Us</a>
 </nav>
 <div class="container">
     <h1><font color="Brown">Welcome to SecureTrust Bank</font></h1>
     <p>Your trusted partner in financial growth and security.</p>
-    
+
+    <!-- Carousel -->
     <div class="carousel">
-        <img src="bank1.jpg" alt="Secure Banking">
-        <img src="bank2.jpg" alt="Financial Growth">
-        <img src="bank3.jpg" alt="Trusted Services">
+        <img src="banner1.jpg" alt="Personal Accounts">
+        <img src="banner2.jpg" alt="Loan Services">
+        <img src="banner3.jpg" alt="Investment Planning">
     </div>
-    
+
     <div class="features">
         <h2>Our Key Services:</h2>
         <ul>
@@ -35,7 +37,7 @@
             <li>24/7 Customer Support</li>
         </ul>
     </div>
-    
+
     <div class="updates">
         <h2>Latest Updates:</h2>
         <ul>
@@ -44,9 +46,24 @@
             <li>Check out our latest blog: "5 Tips for Financial Success."</li>
         </ul>
     </div>
-    
+
+    <div class="contact">
+        <h2>Contact Us:</h2>
+        <p>Email: support@securetrustbank.com</p>
+        <p>Phone: 1800-123-456</p>
+        <p>Address: 123 Finance Avenue, Money City, Bankland</p>
+    </div>
+
     <p>Experience banking like never before!</p>
 </div>
+<footer>
+    <p>&copy; 2025 SecureTrust Bank. All rights reserved.</p>
+    <p>Follow us: 
+        <a href="#">Facebook</a> | 
+        <a href="#">Twitter</a> | 
+        <a href="#">Instagram</a>
+    </p>
+</footer>
 </body>
 </html>
 
@@ -94,7 +111,7 @@
     h1 font {
         color: brown;
     }
-    .features {
+    .features, .updates, .contact {
         margin-top: 30px;
         text-align: left;
     }
@@ -102,17 +119,16 @@
         max-width: 100%;
         margin: 20px 0;
         overflow: hidden;
+        position: relative;
     }
     .carousel img {
         width: 100%;
         border-radius: 8px;
+        display: none;
+        animation: fade 5s infinite;
     }
-    .updates {
-        margin-top: 30px;
-        text-align: left;
-    }
-    .updates h2 {
-        color: #004080;
+    .carousel img:first-child {
+        display: block;
     }
     .updates ul {
         list-style-type: none;
@@ -121,11 +137,37 @@
     .updates li {
         margin-bottom: 15px;
     }
+    footer {
+        background-color: #004080;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+    footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+    }
+    footer a:hover {
+        text-decoration: underline;
+    }
 
     /* Media Queries */
     @media screen and (max-width: 600px) {
         .container {
             padding: 10px;
         }
+        nav a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+    }
+
+    /* Carousel Animation */
+    @keyframes fade {
+        0% { opacity: 0; }
+        33% { opacity: 1; }
+        66% { opacity: 0; }
     }
 </style>

@@ -2,6 +2,52 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">SecureTrust Bank Dashboard</div>
+        <div class="menu">
+            <a href="/">Home</a>
+        </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="container">
+        <h2>Login</h2>
+
+        <!-- Display error message if login fails -->
+        <c:if test="${not empty msg}">
+            <div class="message">${msg}</div>
+        </c:if>
+
+        <!-- Form to Login -->
+        <form action="dash" method="post">
+            <!-- Account Number -->
+            <div class="form-group">
+                <label for="acc_number">Account Number</label>
+                <input type="text" id="acc_number" name="acc_number" placeholder="Enter your account number" required>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Banking System. All rights reserved.</p>
+    </div>
+
+</body>
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -110,50 +156,5 @@
         }
     </style>
 </head>
-
-<body>
-
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">Banking System</div>
-        <div class="menu">
-            <a href="/">Home</a>
-        </div>
-    </div>
-
-    <!-- Login Form -->
-    <div class="container">
-        <h2>Banking Dashboard Login</h2>
-
-        <!-- Display error message if login fails -->
-        <c:if test="${not empty msg}">
-            <div class="message">${msg}</div>
-        </c:if>
-
-        <!-- Form to Login -->
-        <form action="dash" method="post">
-            <!-- Account Number -->
-            <div class="form-group">
-                <label for="acc_number">Account Number</label>
-                <input type="text" id="acc_number" name="acc_number" placeholder="Enter your account number" required>
-            </div>
-
-            <!-- Password -->
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-
-            <!-- Submit Button -->
-            <button type="submit">Login</button>
-        </form>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2024 Banking System. All rights reserved.</p>
-    </div>
-
-</body>
 
 </html>
