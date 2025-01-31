@@ -13,6 +13,7 @@
     <a href="/">Home</a>
     <a href="aboutus">About Us</a>
     <a href="dashlogin">Banking</a>
+	<a href="contact">Contact Us</a>
 </nav>
 
 <div class="container">
@@ -38,7 +39,14 @@
         <p>With over three decades of experience, SecureTrust Bank has become a trusted partner for financial success. We offer competitive rates, unmatched customer service, and robust security systems to ensure your banking experience is seamless and secure.</p>
     </div>
 </div>
-
+	<footer>
+    <p>&copy; 2025 SecureTrust Bank. All rights reserved.</p>
+    <p>Follow us: 
+        <a href="#">Facebook</a> | 
+        <a href="#">Twitter</a> | 
+        <a href="#">Instagram</a>
+    </p>
+</footer>
 </body>
 </html>
 
@@ -117,6 +125,20 @@
     .about-us-content ul li {
         margin-bottom: 10px;
         font-size: 1.2rem;
+    }
+	    footer {
+        background-color: #004080;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+    footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+    }
+    footer a:hover {
+        text-decoration: underline;
     }
 
     /* Media Queries */

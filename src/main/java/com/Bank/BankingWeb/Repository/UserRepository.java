@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.Bank.BankingWeb.Model.Contact;
 import com.Bank.BankingWeb.Model.TransactionData;
 import com.Bank.BankingWeb.Model.UserBanking;
 import com.Bank.BankingWeb.Model.UserLoan;
@@ -54,6 +55,15 @@ public class UserRepository {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
             session.save(loan);
+            session.getTransaction().commit();
+        }
+    }
+    	
+    
+    public void saveContact(Contact contact) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.save(contact);
             session.getTransaction().commit();
         }
     }

@@ -360,6 +360,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.hibernate.Transaction;
 
 
@@ -392,52 +393,58 @@ public class UserController {
     } 
 
     @RequestMapping("/dash")
-    public String DashBoardLoginDB(UserBanking user, Model model, HttpSession session) {
+    public String DashBoardLoginDB(UserBanking user,Model model, HttpSession session) {
         UserBanking dbuser = userService.loginUser(user.getAcc_number(), user.getPassword());
         if (dbuser != null) {
             session.setAttribute("loggedInAccount", dbuser.getAcc_number());
             session.setAttribute("accountBalance", dbuser.getBalance());
 
-            model.addAttribute("accountNumber", dbuser.getAcc_number());
-            model.addAttribute("balance", dbuser.getBalance());
+//            model.addAttribute("accountNumber", dbuser.getAcc_number());
+//            model.addAttribute("balance", dbuser.getBalance());
+//	       	  model.addAttribute("availableBalance", dbuser.getBalance());
+
             return "DashBoardPage";
         } else {
-            model.addAttribute("msg", "Invalid Account No or Password");
+        	model.addAttribute("msg", "Invalid Account No or Password");
             return "DashBoardLoginPage";
         }
     }
+//    
+//    
+//    
+//	@RequestMapping("dashboard")
+//	public String BankingDashBoard(Model model, HttpSession session) {
+//	    // Retrieve logged-in account number from session
+//	    Integer accountNumber = (Integer) session.getAttribute("loggedInAccount");
+//
+//	    if (accountNumber == null) {
+//	        model.addAttribute("msg", "Session expired. Please log in again.");
+//	        return "home"; // Redirect to login if session expired
+//	    }
+//
+//	    // Open a Hibernate session to fetch user data
+//	    Session s = sf.openSession();
+//	    UserBanking dbuser = s.get(UserBanking.class, accountNumber);
+//	    s.close();
+//
+//	    if (dbuser != null) {
+//	        // Add necessary attributes to the model
+//	        model.addAttribute("accountNumber", dbuser.getAcc_number());
+//	        model.addAttribute("balance", dbuser.getBalance());
+//	        model.addAttribute("availableBalance", dbuser.getBalance());
+////	        model.addAttribute("quickLinks", getQuickLinks());
+//	    } else {
+//	        model.addAttribute("msg", "User data not found. Please log in again.");
+//	        return "home"; // Redirect to login if user data is missing
+//	    }
+//
+//	    return "DashBoardPage";
+//	}
     
-    
-    
-	@RequestMapping("dashboard")
-	public String BankingDashBoard(Model model, HttpSession session) {
-	    // Retrieve logged-in account number from session
-	    Integer accountNumber = (Integer) session.getAttribute("loggedInAccount");
-
-	    if (accountNumber == null) {
-	        model.addAttribute("msg", "Session expired. Please log in again.");
-	        return "home"; // Redirect to login if session expired
-	    }
-
-	    // Open a Hibernate session to fetch user data
-	    Session s = sf.openSession();
-	    UserBanking dbuser = s.get(UserBanking.class, accountNumber);
-	    s.close();
-
-	    if (dbuser != null) {
-	        // Add necessary attributes to the model
-	        model.addAttribute("accountNumber", dbuser.getAcc_number());
-	        model.addAttribute("balance", dbuser.getBalance());
-	        model.addAttribute("availableBalance", dbuser.getBalance());
-//	        model.addAttribute("quickLinks", getQuickLinks());
-	    } else {
-	        model.addAttribute("msg", "User data not found. Please log in again.");
-	        return "home"; // Redirect to login if user data is missing
-	    }
-
-	    return "DashBoardPage";
-	}
-
+    @RequestMapping("dashboard")
+    public String bankingDashBoard() {
+    	return "DashBoardPage";
+    }
     
 	@RequestMapping("moneytransfer")
 	public String TransferMoney() {
@@ -504,15 +511,15 @@ public class UserController {
 	    abc.setAccNumber(accountNumber);
 
 	    // Save loan details
-	    s.save(abc);
+	    s.save(abc); 
 	    t.commit();
 	    s.close();
 
 	    // Retrieve updated account balance and add attributes to the model
-	    Integer balance = (Integer) session.getAttribute("accountBalance");
-	    model.addAttribute("accountNumber", accountNumber);
-	    model.addAttribute("balance", balance);
-	    model.addAttribute("availableBalance", balance); // Assuming balance and availableBalance are the same
+//	    Integer balance = (Integer) session.getAttribute("accountBalance");
+//	    model.addAttribute("accountNumber", accountNumber);
+//	    model.addAttribute("balance", balance);
+//	    model.addAttribute("availableBalance", balance); // Assuming balance and availableBalance are the same
 //	    model.addAttribute("quickLinks", getQuickLinks());
 	    model.addAttribute("msg", "Loan application submitted successfully!");
 
@@ -530,5 +537,23 @@ public class UserController {
         List<TransactionData> transactions = userService.getStatements(accountNumber);
         model.addAttribute("transactions", transactions);
         return "viewStatementsPage";
+    }
+            
+    @RequestMapping("/contact")
+    public String contactPage() {
+        return "contact";
+    }
+
+    @RequestMapping("/submitContact")
+    public String submitContact(
+            @RequestParam("name") String name,
+            @RequestParam("email") String email,
+            @RequestParam("message") String message,
+            Model model) {
+
+        userService.saveContactInquiry(name, email, message);
+
+        model.addAttribute("msg", "Thank you for contacting us! We will get back to you soon.");
+        return "contact";
     }
 }

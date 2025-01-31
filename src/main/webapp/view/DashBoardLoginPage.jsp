@@ -41,9 +41,9 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2024 Banking System. All rights reserved.</p>
-    </div>
+	<footer>
+	<p> ©2025 SecureTrust Bank. All rights reserved.</p>
+	</footer>
 
 </body>
 
@@ -146,14 +146,12 @@
             margin-top: 20px;
         }
 
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            padding: 15px;
-            background-color: #2a3b5c;
-            color: white;
-            border-radius: 8px;
-        }
+        	    footer {
+        background-color: #004080;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
     </style>
 </head>
 

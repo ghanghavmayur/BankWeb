@@ -1,0 +1,14 @@
+Model:
+	-Data in the Model is only available during the current 
+	 request. Once the request is completed, the Model data 
+	 is discarded.
+	-Data added to the Model is directly accessible in the 
+	 view (e.g., JSP templates) using placeholders like ${}.
+
+HttpSession: 
+	-The HttpSession is used to store data across multiple 
+	 requests during a user's session. The data persists as 
+	 long as the session is active (or until the user logs out).
+	-Data stored in the session is available globally across
+	 multiple controllers, views, or requests for the same user.
+	
